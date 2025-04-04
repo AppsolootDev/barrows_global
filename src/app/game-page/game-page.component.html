@@ -1,0 +1,36 @@
+<div class="game-play">
+  <div class="segment container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Game Page</h1>
+        <p>Welcome to the game page!</p>
+      </div>
+    </div>
+    <div class="p-6" style="padding: 40px;display: flex;justify-content: center;flex-wrap: wrap;gap:20px">
+      <button type="button" class="btn btn-outline-primary" (click)="selectRandomSegment(0)"> Randomise Segment Selection</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="selectRandomSegment(3)"> Select Segment 3</button>
+    </div>
+    <div class="row" style="gap: 20px;">
+      <div *ngFor="let segment of getSegments();let i = index" class="col-md-12" style="width: auto;">
+        <div class="card" style="width: 18rem;gap: 20px;">
+          <img src="{{segment.imageUrl}}" class="card-img-top" alt="{{segment.name}}">
+          <div class="card-body">
+            <h5 class="card-title">{{segment.id}} - {{segment.name}}</h5>
+            <p class="card-text">{{segment.description}}</p>
+            <div class="card-content">
+              <p class="card-text">
+                active    : {{segment.isActive}} <br/>
+                selected  : {{segment.isSelected}}
+              </p>
+              <div class="content">
+                content   :
+                <button class="e2e-inner-html-bound btn btn-outline-success disabled" [innerHTML]="displayContent(segment)"></button>
+              </div>
+
+            </div>
+            <br/>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

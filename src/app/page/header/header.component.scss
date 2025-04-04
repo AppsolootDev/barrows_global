@@ -1,0 +1,18 @@
+.navbar-expand-lg {
+  justify-content: space-around !important;
+  border-radius: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.form-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-collapse {
+  flex-grow: initial !important;
+}
