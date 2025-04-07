@@ -1,9 +1,9 @@
-import { RequestRedirect } from './../../../node_modules/undici-types/fetch.d';
+import { RequestRedirect } from 'undici-types/fetch';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SegmentGroup, selectGroupedSegmentEntries } from '../spin-state-store/spin.selectors';
+import { SegmentGroup, selectGroupedSegmentEntries } from '../../spin-state-store/spin.selectors';
 import { Observable } from 'rxjs';
-import { resetSegment, resetSpin, setSpin } from '../spin-state-store/spin.action';
+import { resetSegment, resetSpin, setSpin } from '../../spin-state-store/spin.action';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +17,10 @@ export class ResultsComponent implements OnInit {
 
   selectedSegment$: Observable<SegmentGroup[]>;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(
+    private store: Store,
+    private router: Router
+  ) {
     this.selectedSegment$ = store.select(selectGroupedSegmentEntries);
   }
 

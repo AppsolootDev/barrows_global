@@ -1,10 +1,106 @@
+import { Params } from "@angular/router"
+
 export interface Segment {
   id: string,
   name: string,
   value: number,
   content: string,
-  description: string,
+  description?: Params,
   imageUrl: string,
   isSelected: boolean,
   isActive: boolean
 }
+
+
+export const segments = [
+  { id: '1',
+    name: 'Uno',
+    value: 10,
+    imageUrl: 'https://picsum.photos/200/301',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 1</test>",
+    isActive: false,
+    description: {url:'101'}
+  },
+  { id: '2',
+    name: 'Dos',
+    value: 20,
+    imageUrl: 'https://picsum.photos/200/302',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 2</test>",
+    isActive: false,
+    description: {url:'102'}
+  },
+  { id: '3',
+    name: 'Tres',
+    value: 30,
+    imageUrl: 'https://picsum.photos/200/303',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 3</test>",
+    isActive: false,
+    description: {url:'103'}
+  },
+  { id: '4',
+    name: 'Cuatro',
+    value: 40,
+    imageUrl: 'https://picsum.photos/200/304',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 4</test>",
+    isActive: false,
+    description: {url:'104'}
+  },
+  { id: '5',
+    name: 'Cinco',
+    value: 50,
+    imageUrl: 'https://picsum.photos/200/305',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 5</test>",
+    isActive: false,
+    description: {url:'115'}
+  },
+  { id: '6',
+    name: 'Seis',
+    value: 60,
+    imageUrl: 'https://picsum.photos/200/306',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 6</test>",
+    isActive: false,
+    description: {url:'106'}
+  },
+  { id: '7',
+    name: 'Siete',
+    value: 70,
+    imageUrl: 'https://picsum.photos/200/307',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 7</test>",
+    isActive: false,
+    description: {url:'107'}
+  },
+  { id: '8',
+    name: 'Ocho',
+    value: 80,
+    imageUrl: 'https://picsum.photos/200/308',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 8</test>",
+    isActive: false,
+    description: {url:'108'}
+  },
+  { id: '9',
+    name: 'Nueve',
+    value: 90,
+    imageUrl: 'https://picsum.photos/200/309',
+    isSelected: false,
+    content: '<button class="btn button-primary">Clicker 9</test>',
+    isActive: false,
+    description: {url:'109'}
+  },
+  { id: '10',
+    name: 'Diez',
+    value: 100,
+    imageUrl: 'https://picsum.photos/200/310',
+    isSelected: false,
+    content: "<button class='btn button-primary'>Clicker 10</test>",
+    isActive: false,
+    description: {url:'200'}
+  }
+]

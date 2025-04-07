@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GamePageComponent } from './game-page/game-page.component';
-import { LandingComponent } from './landing/landing.component';
-import { ResultsComponent } from './results/results.component';
+import { GamePageComponent } from './page/game-page/game-page.component';
+import { LandingComponent } from './page/landing/landing.component';
+import { ResultsComponent } from './page/results/results.component';
 
 const routes: Routes = [
   { path: 'results', component: ResultsComponent },

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   countProducts$: Observable<number>;
   totalPrices$: Observable<number>;
+  title='Gaming';
 
   constructor(private store: Store) {
     this.countProducts$ = store.select(selectCountSegment);

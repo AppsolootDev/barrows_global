@@ -1,3 +1,10 @@
+@forward '../../../styles.scss';
+@use '../../../styles.scss' as *;
+
+.container {
+  @include centered;
+}
+
 .navbar-expand-lg {
   justify-content: space-around !important;
   border-radius: 1.5rem;

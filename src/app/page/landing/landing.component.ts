@@ -13,8 +13,4 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigateToLogin() {
-    throw new Error('Method not implemented.');
-  }
-
 }

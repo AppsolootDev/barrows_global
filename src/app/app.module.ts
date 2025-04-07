@@ -6,13 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './page/header/header.component';
 import { FooterComponent } from './page/footer/footer.component';
-import { LandingComponent } from './landing/landing.component';
-import { GamePageComponent } from './game-page/game-page.component';
+import { LandingComponent } from './page/landing/landing.component';
+import { GamePageComponent } from './page/game-page/game-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
-import { ResultsComponent } from './results/results.component';
+import { ResultsComponent } from './page/results/results.component';
 import { spinReducer, metaReducerLocalStorage } from './spin-state-store/spin.reducer';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { spinReducer, metaReducerLocalStorage } from './spin-state-store/spin.re
     StoreModule.forRoot({ segmentEntries: spinReducer}, { metaReducers: [metaReducerLocalStorage]}),
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })
