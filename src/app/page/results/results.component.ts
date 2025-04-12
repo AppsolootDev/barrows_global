@@ -45,6 +45,7 @@ export class ResultsComponent implements OnInit {
   redirect(){
     this.clearAllSegments();
     this.router.navigateByUrl('/game');
+    // this.location.back();
   }
 
 }
