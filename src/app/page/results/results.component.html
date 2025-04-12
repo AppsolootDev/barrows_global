@@ -6,10 +6,7 @@
           Well done you have selected a segment.
           <div class="centerfy" >
             <button type="button" class="btn btn-danger" (click)="redirect()">Navigate Back</button>
-
           </div>
-
-
 
           <h2 class="title">Selected Segment</h2>
             <div class="centerfy" *ngIf="(selectedSegment$!=undefined) else noSegment">
@@ -21,11 +18,12 @@
                   <img src="{{entity.segment.imageUrl}}" class="card-img-top" alt="{{entity.segment.name}}">
                 </div>
                 <div class="cardr_content">
-                  <h2 class="cardr_title">{{entity.segment.id}} - {{entity.segment.name}}</h2>
+                  <h2 class="cardr_title">{{entity.segment.id}}</h2>
+                  <h1> - {{entity.segment.name}}</h1>
                   <div class="cardr_text">
                     <input class="form-check-input" type="checkbox" role="switch" value="{{entity.segment.isActive}}" disabled/>
                     <label class="form-check-label" for="flexSwitchCheckDefault"> Is this content active </label> <br/>
-                    <input class="form-check-input" type="checkbox" role="switch" value="{{entity.segment.isSelected}}" disabled/>
+                    <input class="form-check-input" type="checkbox" role="switch" disabled="{{entity.segment.isSelected}}"/>
                     <label class="form-check-label" for="flexSwitchCheckDefault"> Is this content selected</label> <br/>
                     <br>
                     <h5>Description</h5>

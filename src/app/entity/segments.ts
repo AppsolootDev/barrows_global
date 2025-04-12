@@ -12,7 +12,7 @@ export interface Segment {
 }
 
 
-export const segments = [
+export let segments = [
   { id: '1',
     name: 'Uno',
     value: 10,

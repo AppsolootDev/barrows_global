@@ -1,3 +1,4 @@
+import { imgData } from './../../entity/imgData';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Segment, segments } from '../../entity/segments';
 import { Store } from '@ngrx/store';
@@ -5,11 +6,9 @@ import { CommonModule } from '@angular/common';
 import { resetSegment, setSpin } from '../../spin-state-store/spin.action';
 import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { imgData } from '../../entity/imgData';
 import { getImageService } from '../../services/get-images.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HostListener } from '@angular/core';
-
 
 @Component({
   selector: 'app-game-page',
@@ -22,18 +21,7 @@ import { HostListener } from '@angular/core';
 export class GamePageComponent implements OnInit,AfterViewInit {
 
 
-  constructor(
-    private store: Store,
-    private http: HttpClient,
-    private router: Router,
-    private getImage: getImageService
-  ) { }
-
-  @HostListener('window:popstate', ['$event'])
-  onPopState() {
-    location.reload()
-  }
-
+  loaded =false;
   selectedSegment: Segment | undefined;
   isSpinning: boolean = false;
   spinTimeout: any;
@@ -46,32 +34,53 @@ export class GamePageComponent implements OnInit,AfterViewInit {
     download_url: ''
   };
   authors: string[] = [];
-  content$ = Observable<HttpResponse<imgData>>;
+  content$!: Observable<HttpResponse<imgData>>;
 
-  urlRequest() {
+  constructor(
+    private store: Store,
+    private http: HttpClient,
+    private router: Router,
+    private getImage: getImageService
+  ) { }
+
+  async urlRequest() {
     for(let i=0;i <=9;i++) {
-      let author = '';
-      this.getImage.getData(this.getSegments()[i].description?.['url']).subscribe(data =>{
-        if(data.ok) {
-          return author = data.body?.author || 'Unknown';
+  this.loaded= true;
+      console.log('let me know',i);
+      this.content$ = this.getImage.getData(
+        this.getSegments()[i].description?.['url']);
+      this.content$.subscribe(data => {
+        if (data.ok) {
+          this.getSegments()[i]['name'] = data.body?.author || 'Unknown';
         } else {
-          return 'Joe';
+          this.getSegments()[i]['name'] = 'Joe';
         }
+        return this.content$;
       });
-      this.authors.push(author);
     }
+
+    console.log('dude',this.content$);
+    if(this.authors.length>=0)
+    this.getSegments().forEach((segment,i)=>{
+      segment.name = this.authors[i];
+    });
     return this.authors;
   }
 
   ngOnInit(): void {
     this.selectedSegment = this.getSelectedSegment();
+    this.getSegmentsAgain();
   }
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    this.urlRequest();
-    console.log('test',this.authors);
+    this.getSegmentsAgain();
+  }
+
+  async getSegmentsAgain() {
+    var test = await this.urlRequest();
+    console.log('test',test, this.authors);
   }
 
   getSelectedSegment(): Segment {
@@ -104,6 +113,7 @@ export class GamePageComponent implements OnInit,AfterViewInit {
     this.store.dispatch(setSpin(segment));
     this.redirctToResults();
   }
+
 
   public selectRandomSegment(index?: number){
     if(index==0){

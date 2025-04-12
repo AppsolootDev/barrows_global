@@ -5,6 +5,7 @@ import { SegmentGroup, selectGroupedSegmentEntries } from '../../spin-state-stor
 import { Observable } from 'rxjs';
 import { resetSegment, resetSpin, setSpin } from '../../spin-state-store/spin.action';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-results',
@@ -19,7 +20,8 @@ export class ResultsComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.selectedSegment$ = store.select(selectGroupedSegmentEntries);
   }

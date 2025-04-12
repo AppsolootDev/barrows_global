@@ -12,11 +12,9 @@
 .card {
   animation: scale_and_appear 0.5s cubic-bezier(0.5, 0, 0.5, 1) forwards;
   border: 0.25px solid rgb(255, 255, 255);
-  box-shadow: 0 7px 13.5px -2.5px #32325d40,
-                0 4px 8px -7px #0000004d,
-                0 -3px 8px -3px #00000008;
   color: rgb(156, 156, 156);
   text-shadow: 0.5px 0.5px #3a3a3a;
+  transition: width 2s, height 2s, transform 2s;
     &:hover {
     background: var(--gray-100);
     color: gray;
@@ -24,9 +22,9 @@
     transition: background-color 0.5s ease-in,
                            color 0.75s ease-out;
     border: 0.5px solid rgb(177, 156, 98);
-    box-shadow: 0 7px 13.5px -2.5px #c9965340,
-                0 4px 8px -7px #fffed64d,
-                0 -3px 8px -3px #00000008;
+    box-shadow: 0 14px 27px -5px #c9965340,
+                0 8px 16px -14px #fffed64d,
+                0 -6px 16px -6px #00000008;
 
     h5 {
       text-shadow: 1px 1px #6b6b6b;
